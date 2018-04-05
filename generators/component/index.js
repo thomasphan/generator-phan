@@ -6,16 +6,20 @@ const yosay = require('yosay');
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the kryptonian ${chalk.red('generator-phan')} generator!`)
-    );
+    this.log(yosay(`Welcome to the sublime ${chalk.red('generator-phan')} generator!`));
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
-        default: true
+        type: 'input',
+        name: 'moduleName',
+        message: 'Module name',
+        default: 'app'
+      },
+      {
+        type: 'input',
+        name: 'componentName',
+        message: 'Component name',
+        default: 'myComponent'
       }
     ];
 
@@ -26,13 +30,15 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+    const { componentName, moduleName } = this.props;
+    this.fs.copyTpl(
+      this.templatePath('component/**/*'),
+      this.destinationPath(componentName),
+      { componentName, moduleName }
     );
   }
 
   install() {
-    this.installDependencies();
+    // This.installDependencies();
   }
 };
