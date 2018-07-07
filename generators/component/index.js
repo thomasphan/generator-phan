@@ -1,4 +1,6 @@
 'use strict';
+
+const { kebabCase } = require('lodash');
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
@@ -31,10 +33,11 @@ module.exports = class extends Generator {
 
   writing() {
     const { componentName, moduleName } = this.props;
+    const componentTag = kebabCase(componentName);
     this.fs.copyTpl(
       this.templatePath('component/**/*'),
       this.destinationPath(componentName),
-      { componentName, moduleName }
+      { componentName, componentTag, moduleName }
     );
   }
 

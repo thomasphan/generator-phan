@@ -2,6 +2,9 @@
 
 import module from 'Src/module';
 import * as defaultTemplateUrl from './template.pug';
+import {
+  assign
+} from 'lodash/fp';
 
 const name = '<%= componentName %>';
 export default name;
@@ -11,14 +14,22 @@ const bindings = {
   layout: '@',
 };
 
-function controller() {
+function controller($ngRedux) {
   'ngInject';
 
   const $ctrl = this;
 
-  _.assign($ctrl, {
+  assign($ctrl, {
     name,
   });
+
+  $ctrl.$onDestroy = $ngRedux.connect(state => {
+    // console.log(state);
+
+    const isAdmin = state.isAdmin.value;
+
+    return { isAdmin };
+  })($ctrl);
 }
 
 module.component(name, {
