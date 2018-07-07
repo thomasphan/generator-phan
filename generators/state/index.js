@@ -38,6 +38,11 @@ module.exports = class extends Generator {
       this.destinationPath(componentName),
       { componentName, componentTag, moduleName }
     );
+    this.fs.copyTpl(
+      this.templatePath('../../component/templates/component/**/*'),
+      this.destinationPath('component'),
+      { componentName, componentTag, moduleName }
+    );
   }
 
   install() {
