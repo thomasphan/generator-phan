@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": ["es2017", "dom"],
+    "paths": {
+      "Src/*": ["src/*"]
+    },
+    "sourceMap": true
+  }
+}
