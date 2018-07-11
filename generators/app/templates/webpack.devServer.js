@@ -8,11 +8,11 @@ const devServer = {
 }
 
 const config = {
-  devServer
+  devServer,
 }
 
 const configs = [
-  config
+  config,
 ]
 
 module.exports = merge(configs)

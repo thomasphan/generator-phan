@@ -4,11 +4,11 @@ const path = require('path')
 const rules = [
   {
     test: /\.(png|svg)$/,
-    use: ['file-loader']
+    use: ['file-loader'],
   },
   {
     test: /\.css$/,
-    use: ['style-loader', 'css-loader']
+    use: ['style-loader', 'css-loader'],
   },
   {
     test: /\.tsx?$/,
