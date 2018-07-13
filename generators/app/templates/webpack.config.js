@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const path = require('path')
+const webpack = require('webpack')
 
 const rules = [
   {
@@ -37,6 +38,7 @@ const config = {
 
 const configs = [
   require('./webpack.devServer.js'),
+  require('./webpack.plugins.js'),
   config,
 ]
 
