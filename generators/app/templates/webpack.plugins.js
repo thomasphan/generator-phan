@@ -2,12 +2,13 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 
 const plugins = [
-  new webpack.ProvidePlugin({
+  // Because globals can also be added with expose-loader
+  /* new webpack.ProvidePlugin({
     '$': 'jquery',
     'jQuery': 'jquery',
     'window.$': 'jquery',
     'window.jQuery': 'jquery',
-  }),
+  }), */
 ]
 
 const config = {
