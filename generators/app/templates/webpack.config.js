@@ -29,6 +29,17 @@ const rules = [
       },
     ],
   },
+  // Because there is code dependent on angular being globally available
+  // TODO: Consider removing
+  {
+    test: require.resolve('angular'),
+    use: [
+      {
+        loader: 'expose-loader',
+        options: 'angular',
+      },
+    ],
+  },
 ]
 
 const extensions = [
