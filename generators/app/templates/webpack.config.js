@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const path = require('path')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const webpack = require('webpack')
 
 const rules = [
@@ -48,6 +49,15 @@ const extensions = [
   '.js',
 ]
 
+const plugins = [
+  new TsconfigPathsPlugin(),
+]
+
+const resolve = {
+  extensions,
+  plugins,
+}
+
 const output = {
   path: path.resolve(__dirname, './public/js'),
   publicPath: '/js/',
@@ -57,7 +67,7 @@ const config = {
   module: { rules },
   output,
   mode: 'development',
-  resolve: { extensions },
+  resolve,
 }
 
 const configs = [
