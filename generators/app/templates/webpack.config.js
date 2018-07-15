@@ -17,6 +17,14 @@ const rules = [
     use: ['style-loader', 'css-loader'],
   },
   {
+    test: /\.scss$/,
+    use: ['style-loader', 'css-loader', 'sass-loader'],
+  },
+  {
+    test: /\.less$/,
+    use: ['style-loader', 'css-loader', 'less-loader'],
+  },
+  {
     test: /\.tsx?$/,
     use: ['ts-loader'],
     exclude: /node_modules/,
