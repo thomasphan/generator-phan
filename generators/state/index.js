@@ -4,6 +4,7 @@ const { kebabCase } = require('lodash');
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const fse = require('fs-extra');
 
 module.exports = class extends Generator {
   prompting() {
@@ -43,6 +44,8 @@ module.exports = class extends Generator {
       this.destinationPath(`${componentName}/component`),
       { componentName, componentTag, moduleName }
     );
+
+    fse.appendFile('index.ts', `import './${componentName}';\r\n`);
   }
 
   install() {
