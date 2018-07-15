@@ -3,7 +3,8 @@
 import module from 'Src/module';
 import * as defaultTemplateUrl from './template.pug';
 import {
-  assign
+  cond,
+  pipe,
 } from 'lodash/fp';
 
 const name = '<%= componentName %>';
@@ -14,22 +15,20 @@ const bindings = {
   // layout: '@',
 };
 
-function controller($ngRedux) {
+function controller(
+  // $ngRedux
+) {
   'ngInject';
 
   const $ctrl = this;
 
-  assign($ctrl, {
-    name,
-  });
+  $ctrl.$onChanges = () => {};
 
-  $ctrl.$onDestroy = $ngRedux.connect(state => {
-    // console.log(state);
-
+  /* $ctrl.$onDestroy = $ngRedux.connect(state => {
     const isAdmin = state.isAdmin.value;
 
     return { isAdmin };
-  })($ctrl);
+  })($ctrl); */
 }
 
 module.component(name, {
