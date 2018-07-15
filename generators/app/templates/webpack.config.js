@@ -9,6 +9,10 @@ const rules = [
     use: ['file-loader'],
   },
   {
+    test: /\.(pug)$/,
+    use: ['file-loader?name=[hash].html', 'pug-html-loader'],
+  },
+  {
     test: /\.css$/,
     use: ['style-loader', 'css-loader'],
   },

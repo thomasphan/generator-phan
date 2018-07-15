@@ -10,9 +10,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.18",
     "angular": "^1.7.2",
+    "angular-animate": "^1.7.2",
+    "angular-aria": "^1.7.2",
+    "angular-local-storage": "^0.7.1",
+    "angular-material": "^1.1.10",
+    "angular-messages": "^1.7.2",
+    "angular-moment": "^1.2.0",
+    "angular-resource": "^1.7.2",
+    "angular-sanitize": "^1.7.2",
+    "croppie": "^2.6.2",
     "jquery": "^3.3.1",
     "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "ng-redux": "^4.1.0-alpha",
+    "pug-html-loader": "^1.1.5",
+    "redux": "^4.0.0",
     "three": "^0.94.0"
   },
   "devDependencies": {
