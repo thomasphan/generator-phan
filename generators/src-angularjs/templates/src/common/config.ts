@@ -9,6 +9,7 @@ function config(
   $mdAriaProvider,
   $sceProvider,
   $urlMatcherFactoryProvider,
+  $urlRouterProvider,
 ) {
   'ngInject';
 
@@ -22,4 +23,6 @@ function config(
   $sceProvider.enabled(false);
 
   $urlMatcherFactoryProvider.strictMode(false);
+
+  $urlRouterProvider.otherwise('/');
 }
