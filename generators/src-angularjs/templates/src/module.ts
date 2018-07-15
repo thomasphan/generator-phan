@@ -1,8 +1,15 @@
 'use strict';
 
 import * as angular from 'angular';
+import '@uirouter/angularjs';
+import 'angular-material';
+import 'ng-redux';
 
-const dependencies = [];
+const dependencies = [
+  'ngMaterial',
+  'ngRedux',
+  'ui.router',
+];
 
 const module = angular.module('app', dependencies);
 
