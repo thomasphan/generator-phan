@@ -1,9 +1,11 @@
 'use strict';
 
-const { kebabCase } = require('lodash');
-const Generator = require('yeoman-generator');
+const { kebabCase } = require('lodash/fp');
 const chalk = require('chalk');
+const Generator = require('yeoman-generator');
 const yosay = require('yosay');
+
+const { addImportStatement } = require('../../helpers');
 
 module.exports = class extends Generator {
   prompting() {
@@ -40,7 +42,9 @@ module.exports = class extends Generator {
     );
   }
 
-  install() {
-    // This.installDependencies();
+  end() {
+    const { componentName } = this.props;
+
+    addImportStatement(this.destinationPath())(componentName);
   }
 };

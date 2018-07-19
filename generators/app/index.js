@@ -16,4 +16,16 @@ module.exports = class extends Generator {
 
     this.installDependencies({ bower: false });
   }
+
+  end() {
+    const moduleName = 'app';
+    const componentName = 'landing';
+    const dir = 'src';
+
+    this.composeWith(require.resolve('../state'), {
+      moduleName,
+      componentName,
+      dir
+    });
+  }
 };

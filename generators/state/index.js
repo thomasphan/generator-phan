@@ -1,12 +1,11 @@
 'use strict';
 
-const { kebabCase } = require('lodash');
-const fp = require('lodash/fp');
-const Generator = require('yeoman-generator');
+const { cond, get, kebabCase, pick, stubTrue } = require('lodash/fp');
 const chalk = require('chalk');
+const Generator = require('yeoman-generator');
 const yosay = require('yosay');
-const fse = require('fs-extra');
-const path = require('path');
+
+const { addImportStatement } = require('../../helpers');
 
 module.exports = class extends Generator {
   prompting() {
@@ -27,8 +26,6 @@ module.exports = class extends Generator {
         default: 'myComponent'
       }
     ];
-
-    const { cond, get, pick, stubTrue } = fp;
 
     const optionsToProps = () => {
       this.props = pick(['moduleName', 'componentName'])(this.options);
@@ -70,12 +67,6 @@ module.exports = class extends Generator {
   end() {
     const { componentName } = this.props;
 
-    const indexPath = () => path.join(this.destinationPath(), 'index.ts');
-
-    fse.appendFile(indexPath(), `import './${componentName}';\r\n`, err =>
-      console.log(err || '...')
-    );
+    addImportStatement(this.destinationPath())(componentName);
   }
-
-  install() {}
 };
