@@ -1,5 +1,6 @@
 'use strict';
 
+const cheerio = require('cheerio');
 const Generator = require('yeoman-generator');
 const fse = require('fs-extra');
 
@@ -18,6 +19,22 @@ module.exports = class extends Generator {
   }
 
   end() {
+    const $ = cheerio.load(fse.readFileSync(this.destinationPath('public/index.html')));
+
+    $('body').prepend('<div ui-view=""></div>');
+
+    $('body p').remove();
+
+    // Remove jQuery
+    $('body script')
+      .eq(1)
+      .remove();
+    $('body script')
+      .eq(1)
+      .remove();
+
+    fse.outputFile(this.destinationPath('public/index.html'), $.html());
+
     const moduleName = 'app';
     const componentName = 'landing';
     const dir = 'src';
