@@ -21,7 +21,9 @@ module.exports = class extends Generator {
   end() {
     const $ = cheerio.load(fse.readFileSync(this.destinationPath('public/index.html')));
 
-    $('body').prepend('<div ui-view=""></div>');
+    $('body').attr('layout', 'column');
+
+    $('body').prepend('<div ui-view="" flex layout="column"></div>');
 
     $('body p').remove();
 
