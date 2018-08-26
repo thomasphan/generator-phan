@@ -27,6 +27,13 @@ module.exports = class extends Generator {
   install() {
     const { appName } = this.props;
 
-    this.npmInstall(['@material-ui/core'], {}, { cwd: appName });
+    const dependencies = [
+      '@material-ui/core',
+      '@material-ui/icons',
+      'mdi-material-ui',
+      'typeface-roboto'
+    ];
+
+    this.npmInstall(dependencies, {}, { cwd: appName });
   }
 };
