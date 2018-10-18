@@ -61,6 +61,12 @@ const extensions = [
   '.js',
 ]
 
+const optimization = {
+  splitChunks: {
+    chunks: 'all'
+  }
+}
+
 const plugins = [
   new TsconfigPathsPlugin(),
 ]
@@ -77,6 +83,7 @@ const output = {
 
 const config = {
   module: { rules },
+  optimization,
   output,
   mode: 'development',
   resolve,
